@@ -1,13 +1,39 @@
+/**
+ * https://www.interviewbit.com/problems/intersection-of-sorted-arrays/hints/
+ * @param {*} A
+ * @param {*} B
+ * @returns []
+ * 
+ * Asked In:
+   Facebook (Meta)
+    Google
+
+
+    Just not forget that the array is sorted so use pointer
+    start from start of the arrays and compare if a[i] >b[i]
+    increase b index and vice verse 
+    if both equal add i to array and increase both
+    if the length of the array B is at last index break the loop
+*/
+
 function IntersectionOfTwoArray(A, B) {
   let arr = [];
-
-  for (let i = 0; i < A.length; i++) {
-    let currElement = A[i];
-    let pointer1 = 0;
-    let pointer2 = 0;
-    // if()
+  let pointer1 = 0;
+  let pointer2 = 0;
+  while (pointer1 < A.length) {
+    if (pointer2 === B.length) {
+      break;
+    }
+    if (A[pointer1] < B[pointer2]) {
+      pointer1++;
+    } else if (A[pointer1] === B[pointer2]) {
+      arr.push(A[pointer1]);
+      pointer1++;
+      pointer2++;
+    } else {
+      pointer2++;
+    }
   }
-
   return arr;
 }
 
